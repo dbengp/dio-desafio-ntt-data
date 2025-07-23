@@ -92,8 +92,8 @@ A arquitetura é composta por um conjunto de serviços independentes que se comu
   * authorizeExchange(exchanges \-\> exchanges.pathMatchers("/eureka/\*\*").permitAll().anyExchange().authenticated()): Permite acesso público ao Eureka e exige autenticação para todas as outras rotas.  
   * oauth2ResourceServer(oauth2 \-\> oauth2.jwt(jwt \-\> jwt.jwtAuthenticationConverter(grantedAuthoritiesExtractor()))): Configura o Gateway como um Resource Server JWT, utilizando um conversor personalizado para extrair roles do JWT (realm\_access.roles) e mapeá-las para GrantedAuthority.  
   * GlobalFilter customGlobalFilter(): Um filtro global que extrai o ID do usuário (sub claim) e as roles do JWT, adicionando-os como cabeçalhos HTTP (X-User-ID, X-User-Roles) para os microsserviços downstream.  
-* Importando a Collection Postman:  
-  Para facilitar a validação das chamadas através do Gateway, foi gerada uma collection do Postman chamada dio-desafio-ntt-data.postman\_collection. Siga os passos abaixo para importá-la:  
+* Importando a Collection Postman <https://github.com/dbengp/dio-desafio-ntt-data/blob/44dd47fbfa7876654e5c418f469c4f845c30d3b1/postman/dio-desafio-ntt-data.postman_collection.json>:  
+  Para facilitar a validação das chamadas através do Gateway, foi gerada uma collection do Postman chamada dio-desafio-ntt-data.postman_collection.json. Siga os passos abaixo para importá-la:  
   1. **Abra o Postman.**  
   2. No menu superior esquerdo, clique em **File** (Arquivo) \> **Import** (Importar).  
   3. Na janela de importação, clique na aba **Upload Files** (Carregar Arquivos).  
