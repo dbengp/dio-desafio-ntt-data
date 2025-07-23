@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: ms-product
+              uri: lb://MS-PRODUCT
+              predicates:
+                - Path=/products/**
+            - id: ms-order
+              uri: lb://MS-ORDER
+              predicates:
+                - Path=/orders/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082/auth/realms/ms-product-realm
+server:
+  port: 8080
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

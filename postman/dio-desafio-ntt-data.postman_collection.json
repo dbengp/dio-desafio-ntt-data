@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "6289b41d-2eda-4a70-9d3c-4b55001bac60",
+		"name": "dio-desafio-ntt-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12900556",
+		"_collection_link": "https://crimson-flare-81095.postman.co/workspace/learn~7ded2dce-a04a-405d-b387-00897ec9be76/collection/12900556-6289b41d-2eda-4a70-9d3c-4b55001bac60?action=share&source=collection_link&creator=12900556"
+	},
+	"item": [
+		{
+			"name": "lista todos os produtos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pega um produto especifico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualiza dados de um produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Novo Produto XYZ\",\r\n    \"description\": \"Descrição detalhada do novo produto XYZ.\",\r\n    \"price\": 99.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleta um produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Novo Produto XYZ\",\r\n    \"description\": \"Descrição detalhada do novo produto XYZ.\",\r\n    \"price\": 99.99\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "simula um pedido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2Z3E2c0kxLUc5bGRYTjdHTWIwQXlVb1l5WjdxTHp1d21yb280UVAwUWtBIn0.eyJleHAiOjE3NTMyNTIxNTUsImlhdCI6MTc1MzI1MDk1NSwianRpIjoiNTY3NjFiMmMtNmQ1Yi00YzkwLTljZDEtZTI3YWZiN2I5MzA0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL2F1dGgvcmVhbG1zL21zLXByb2R1Y3QtcmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNDIyOGM3NzgtYTQ1Ny00YWJhLTk4NGQtNTFiZDk4NWYzN2I1IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicG9zdG1hbi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiZjU4NGFhMDQtOWY1OS00OTVlLTkwOGItYjdjYzgwYjJjYzU3IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbXMtcHJvZHVjdC1yZWFsbSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJmNTg0YWEwNC05ZjU5LTQ5NWUtOTA4Yi1iN2NjODBiMmNjNTciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6Im1zcHJvZHVjdGRldiJ9.e3U6ZtHxygNpCr3i-qTSg5-zD-3jRPJbEWA-_Fz4dDMGeEMnVF_kdG9ujc9miQxnrlMkMpAhmu2CAvbMWYgKblKYkewTS1AkWP2LNTVH2E6SQzkr4m_DF58pFjE_fy2sA4O1hyM68KhkUfqKvzqBxs0_dr7NrYLT3ybDiEBBbOtH-40mxoVTCFEviBCbvx65LmbQ86nM8XGgFu4YQOAuCdJlOY4LA0qt9peQzCW6Ags_A-E0aPKOkUqLU4zScAgHwqib2QmpyrlNwW5zNQZO5-5iUhTMOWfArmkdbx9kHgRr4p6gCqDTtkxJOyCvAGOFGm50qmp0esNKUnx0BEZcCA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 1,\r\n  \"items\": [\r\n    {\r\n      \"productId\": 5,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"productId\": 3,\r\n      \"quantity\": 10\r\n    },\r\n    {\r\n      \"productId\": 8,\r\n      \"quantity\": 6\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/orders/simulate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"simulate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "token_keycloak",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{user_password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{user_username}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{keycloak_url}}/auth/realms/{{realm_name}}/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

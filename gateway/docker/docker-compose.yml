@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.4
+    container_name: keycloak
+    ports:
+      - "8082:8080"
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres_to_keycloak
+      DB_DATABASE: keycloak
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_USERNAME: dev
+      KC_DB_PASSWORD: p0stgreS
+      KC_DB_URL: jdbc:postgresql://postgres_to_keycloak/keycloak
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8082
+      KC_HTTP_ENABLED: "true"
+      KC_PROXY: passthrough
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+      KC_LOG_LEVEL: INFO
+      KC_FEATURES: token-exchange,admin-fine-grained-authz
+      KC_HTTP_RELATIVE_PATH: /auth
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+      KC_HOSTNAME_STRICT_BACKCHANNEL: "false"
+      KC_HOSTNAME_STRICT_BACKCHANNEL_HTTPS: "false"
+    command: ["start-dev"]
+    depends_on:
+      - postgres
+    networks:
+      - keycloak-net
+
+  postgres:
+    image: postgres:13
+    container_name: postgres_to_keycloak
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: p0stgreS
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - keycloak-net
+
+networks:
+  keycloak-net:
+
+volumes:
+  postgres_data:

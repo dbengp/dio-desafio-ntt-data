@@ -1,0 +1,19 @@
+server:
+  port: 8083
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: ms-order
+  feign:
+    client:
+      config:
+        default:
+          loggerLevel: basic
+logging:
+  level:
+    br.com.mswithspring.backend.ms_order.client.ProductClient: INFO
