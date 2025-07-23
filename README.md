@@ -241,52 +241,55 @@ Obs 2.: Tive que usar os containers direto no WSL2 pois o Docker Desktop não fu
 4. **MS-Order:** (java \-jar ms-order-0.0.1-SNAPSHOT.jar)  
 5. **Gateway:** (java \-jar gateway-0.0.1-SNAPSHOT.jar)
 
-graph TD  
-    subgraph Cliente/Usuário  
-        C\[Cliente/Usuário\]  
+### Diagrama do Sistema:
+
+```mermaid
+graph TD
+    subgraph Cliente/Usuário
+        C[Cliente/Usuário]
     end
 
-    subgraph Infraestrutura\_Docker\_WSL2  
-        subgraph Keycloak  
-            KC\[Keycloak:8082\]  
-            KCDb(Keycloak DB)  
-            KC \--- KCDb  
-        end  
-        subgraph MS\_Product\_DB  
-            MSPDb(PostgreSQL:5432)  
-        end  
+    subgraph Infraestrutura_Docker
+        subgraph Keycloak
+            KC[Keycloak:8082]
+            KCDb(Keycloak DB)
+            KC --- KCDb
+        end
+        subgraph MS_Product_DB
+            MSPDb(PostgreSQL:5432)
+        end
     end
 
-    subgraph APIs\_Spring\_Boot  
-        GW\[Gateway:8080\]  
-        E\[Eureka Server:8761\]  
-        MSP\[MS-Product:8081\]  
-        MSO\[MS-Order:8083\]  
+    subgraph Aplicações_Spring_Boot
+        GW[Gateway:8080]
+        E[Eureka Server:8761]
+        MSP[MS-Product:8081]
+        MSO[MS-Order:8083]
     end
 
-    C \--\> GW  
-    GW \-- Autenticação JWT \--\> KC  
-    GW \-- Descoberta de Serviço \--\> E  
-    MSP \-- Registro/Descoberta \--\> E  
-    MSO \-- Registro/Descoberta \--\> E  
-    MSP \-- Persistência \--\> MSPDb  
-    MSO \-- Busca de Produtos \--\> MSP
+    C --> GW
+    GW -- Autenticação JWT --> KC
+    GW -- Descoberta de Serviço --> E
+    MSP -- Registro/Descoberta --> E
+    MSO -- Registro/Descoberta --> E
+    MSP -- Persistência --> MSPDb
+    MSO -- Busca de Produtos --> MSP
 
-    style C fill:\#f9f,stroke:\#333,stroke-width:2px  
-    style GW fill:\#bbf,stroke:\#333,stroke-width:2px  
-    style KC fill:\#ccf,stroke:\#333,stroke-width:2px  
-    style E fill:\#bfb,stroke:\#333,stroke-width:2px  
-    style MSP fill:\#ffc,stroke:\#333,stroke-width:2px  
-    style MSO fill:\#cff,stroke:\#333,stroke-width:2px  
-    style MSPDb fill:\#fcc,stroke:\#333,stroke-width:2px  
-    style KCDb fill:\#fcc,stroke:\#333,stroke-width:2px
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+    style GW fill:#bbf,stroke:#333,stroke-width:2px
+    style KC fill:#ccf,stroke:#333,stroke-width:2px
+    style E fill:#bfb,stroke:#333,stroke-width:2px
+    style MSP fill:#ffc,stroke:#333,stroke-width:2px
+    style MSO fill:#cff,stroke:#333,stroke-width:2px
+    style MSPDb fill:#fcc,stroke:#333,stroke-width:2px
+    style KCDb fill:#fcc,stroke:#333,stroke-width:2px
 
-    linkStyle 0 stroke:\#000,stroke-width:2px,color:black;  
-    linkStyle 1 stroke:\#a00,stroke-width:2px,color:red;  
-    linkStyle 2 stroke:\#0a0,stroke-width:2px,color:green;  
-    linkStyle 3 stroke:\#0a0,stroke-width:2px,color:green;  
-    linkStyle 4 stroke:\#0a0,stroke-width:2px,color:green;  
-    linkStyle 5 stroke:\#00f,stroke-width:2px,color:blue;  
-    linkStyle 6 stroke:\#00f,stroke-width:2px,color:blue;  
-
-#### Esse README foi criado com auxílio massivo do Gemini 2.5 flash! Ficou muito bom por sinal.
+    linkStyle 0 stroke:#000,stroke-width:2px,color:black;
+    linkStyle 1 stroke:#a00,stroke-width:2px,color:red;
+    linkStyle 2 stroke:#0a0,stroke-width:2px,color:green;
+    linkStyle 3 stroke:#0a0,stroke-width:2px,color:green;
+    linkStyle 4 stroke:#0a0,stroke-width:2px,color:green;
+    linkStyle 5 stroke:#00f,stroke-width:2px,color:blue;
+    linkStyle 6 stroke:#00f,stroke-width:2px,color:blue;
+```
+#### Esse README foi criado com auxílio massivo do Gemini 2.5 flash.
